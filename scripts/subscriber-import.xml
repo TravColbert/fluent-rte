@@ -1,0 +1,44 @@
+<subscribers>
+<subscriber>
+	<id>1</id>
+	<username>1001</username>
+	<password>test123</password>
+	<ha1/>
+	<ha1b/>
+	<domain>cde.wtbts.net</domain>
+	<screenname>Test Extension 1001</screenname>
+	<rpid>Extension 1001</rpid>
+	<email_address>1001@cde.wtbts.net</email_address>
+	<vmail>*771001</vmail>
+	<shared>t</shared>
+	<enabled>t</enabled>
+</subscriber>
+<subscriber>
+	<id>2</id>
+	<username>2001</username>
+	<password>test123</password>
+	<ha1/>
+	<ha1b/>
+	<domain>cde.wtbts.net</domain>
+	<screenname>Test Extension 2001</screenname>
+	<rpid>Extension 2001</rpid>
+	<email_address>2001@cde.wtbts.net</email_address>
+	<vmail>*772001</vmail>
+	<shared>t</shared>
+	<enabled>t</enabled>
+</subscriber>
+<subscriber>
+	<id>3</id>
+	<username>4001</username>
+	<password>test123</password>
+	<ha1/>
+	<ha1b/>
+	<domain>cde.wtbts.net</domain>
+	<screenname>Test Extension 3001</screenname>
+	<rpid>Extension 3001</rpid>
+	<email_address>3001@cde.wtbts.net</email_address>
+	<vmail>*773001</vmail>
+	<shared>t</shared>
+	<enabled>t</enabled>
+</subscriber>
+</subscribers>

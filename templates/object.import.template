@@ -1,0 +1,25 @@
+	<form name="import" action="index.php" method="post">
+	<!-- <input type="hidden" id="template" name="template" value="subscriber.table.template"/> -->
+	<input type="hidden" id="action" name="action" value="import"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Import Object</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Object Type:</td><td><input type="text" id="resource" name="resource" value="{@objecttype}"/></td>
+			</tr>
+			<tr>
+				<td>Import File:</td><td><input type="text" id="importfile" name="importfile" value=""/></td>
+			</tr>
+			<tr>
+				<td>Import Data:</td><td><textarea cols="80" rows="20" id="importdata" name="importdata"></textarea></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="Import"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

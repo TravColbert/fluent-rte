@@ -1,0 +1,118 @@
+  <!-- General -->
+
+  <Line_Enable_{linenum}_ ua="na">Yes</Line_Enable_{linenum}_>
+
+  <!-- Share Line Appearance -->
+
+  <Share_Ext_{linenum}_ ua="na">private</Share_Ext_{linenum}_> <!-- options: private/shared -->
+  <Shared_User_ID_{linenum}_ ua="na"></Shared_User_ID_{linenum}_>
+  <Subscription_Expires_{linenum}_ ua="na">3600</Subscription_Expires_{linenum}_>
+  <Restrict_MWI_{linenum}_ ua="na">No</Restrict_MWI_{linenum}_>
+  <Monitor_User_ID_{linenum}_ ua="na"></Monitor_User_ID_{linenum}_>
+
+  <!-- NAT Settings -->
+
+  <NAT_Mapping_Enable_{linenum}_ ua="na">No</NAT_Mapping_Enable_{linenum}_>
+  <NAT_Keep_Alive_Enable_{linenum}_ ua="na">No</NAT_Keep_Alive_Enable_{linenum}_>
+  <NAT_Keep_Alive_Msg_{linenum}_ ua="na">$NOTIFY</NAT_Keep_Alive_Msg_{linenum}_>
+  <NAT_Keep_Alive_Dest_{linenum}_ ua="na">$PROXY</NAT_Keep_Alive_Dest_{linenum}_>
+
+  <!-- Network Settings -->
+
+  <SIP_TOS_DiffServ_Value_{linenum}_ ua="na">0x68</SIP_TOS_DiffServ_Value_{linenum}_>
+  <SIP_CoS_Value_{linenum}_ ua="na">3</SIP_CoS_Value_{linenum}_> <!-- options: 0/1/2/3/4/5/6/7 -->
+  <RTP_TOS_DiffServ_Value_{linenum}_ ua="na">0xb8</RTP_TOS_DiffServ_Value_{linenum}_>
+  <RTP_CoS_Value_{linenum}_ ua="na">6</RTP_CoS_Value_{linenum}_> <!-- options: 0/1/2/3/4/5/6/7 -->
+  <Network_Jitter_Level_{linenum}_ ua="na">high</Network_Jitter_Level_{linenum}_> <!-- options: low/medium/high/very high/extremely high -->
+  <Jitter_Buffer_Adjustment_{linenum}_ ua="na">up and down</Jitter_Buffer_Adjustment_{linenum}_> <!-- options: up and down/up only/down only/disable -->
+
+  <!-- SIP Settings -->
+
+  <SIP_Transport_{linenum}_ ua="na">UDP</SIP_Transport_{linenum}_> <!-- options: UDP/TCP/TLS -->
+  <SIP_Port_{linenum}_ ua="na">{proxy1port}</SIP_Port_{linenum}_>
+  <SIP_100REL_Enable_{linenum}_ ua="na">No</SIP_100REL_Enable_{linenum}_>
+  <EXT_SIP_Port_{linenum}_ ua="na"></EXT_SIP_Port_{linenum}_>
+  <Auth_Resync-Reboot_{linenum}_ ua="na">Yes</Auth_Resync-Reboot_{linenum}_>
+  <SIP_Proxy-Require_{linenum}_ ua="na"></SIP_Proxy-Require_{linenum}_>
+  <SIP_Remote-Party-ID_{linenum}_ ua="na">No</SIP_Remote-Party-ID_{linenum}_>
+  <Referor_Bye_Delay_{linenum}_ ua="na">4</Referor_Bye_Delay_{linenum}_>
+  <Refer-To_Target_Contact_{linenum}_ ua="na">No</Refer-To_Target_Contact_{linenum}_>
+  <Referee_Bye_Delay_{linenum}_ ua="na">0</Referee_Bye_Delay_{linenum}_>
+  <SIP_Debug_Option_{linenum}_ ua="na">none</SIP_Debug_Option_{linenum}_> <!-- options: none/1-line/1-line excl. OPT/1-line excl. NTFY/1-line excl. REG/1-line excl. OPT|NTFY|REG/full/full excl. OPT/full excl. NTFY/full excl. REG/full excl. OPT|NTFY|REG -->
+  <Refer_Target_Bye_Delay_{linenum}_ ua="na">0</Refer_Target_Bye_Delay_{linenum}_>
+  <Sticky_183_{linenum}_ ua="na">No</Sticky_183_{linenum}_>
+  <Auth_INVITE_{linenum}_ ua="na">No</Auth_INVITE_{linenum}_>
+  <Ntfy_Refer_On_1xx-To-Inv_{linenum}_ ua="na">Yes</Ntfy_Refer_On_1xx-To-Inv_{linenum}_>
+  <Use_Anonymous_With_RPID_{linenum}_ ua="na">Yes</Use_Anonymous_With_RPID_{linenum}_>
+  <Set_G729_annexb_{linenum}_ ua="na">none</Set_G729_annexb_{linenum}_> <!-- options: none/no/yes/follow silence supp setting -->
+  <Voice_Quality_Report_Address_{linenum}_ ua="na"></Voice_Quality_Report_Address_{linenum}_>
+
+  <!-- Call Feature Settings -->
+
+  <Blind_Attn-Xfer_Enable_{linenum}_ ua="na">No</Blind_Attn-Xfer_Enable_{linenum}_>
+  <MOH_Server_{linenum}_ ua="na">{mohurl}</MOH_Server_{linenum}_>
+  <Message_Waiting_{linenum}_ ua="na">Yes</Message_Waiting_{linenum}_>
+  <Auth_Page_{linenum}_ ua="na">No</Auth_Page_{linenum}_>
+  <Default_Ring__{linenum}__ ua="na">1</Default_Ring__{linenum}__> <!-- options: No Ring/1/2/3/4/5/6/7/8/9/10/User 1/User 2 -->
+  <Auth_Page_Realm_{linenum}_ ua="na"></Auth_Page_Realm_{linenum}_>
+  <Conference_Bridge_URL_{linenum}_ ua="na"></Conference_Bridge_URL_{linenum}_>
+  <Auth_Page_Password_{linenum}_ ua="na"></Auth_Page_Password_{linenum}_>
+  <Mailbox_ID_{linenum}_ ua="na">{vmail}</Mailbox_ID_{linenum}_>
+  <Voice_Mail_Server_{linenum}_ ua="na"></Voice_Mail_Server_{linenum}_>
+  <Voice_Mail_Subscribe_Interval_{linenum}_ ua="na">86400</Voice_Mail_Subscribe_Interval_{linenum}_>
+  <State_Agent_{linenum}_ ua="na"></State_Agent_{linenum}_>
+  <CFWD_Notify_Serv_{linenum}_ ua="na">No</CFWD_Notify_Serv_{linenum}_>
+  <CFWD_Notifier_{linenum}_ ua="na"></CFWD_Notifier_{linenum}_>
+  <User_ID_with_Domain_{linenum}_ ua="na">No</User_ID_with_Domain_{linenum}_>
+
+  <!-- Proxy and Registration -->
+
+  <Proxy_{linenum}_ ua="na">{proxy1}</Proxy_{linenum}_>
+  <Outbound_Proxy_{linenum}_ ua="na">{outproxy}</Outbound_Proxy_{linenum}_>
+  <Use_Outbound_Proxy_{linenum}_ ua="na">No</Use_Outbound_Proxy_{linenum}_>
+  <Use_OB_Proxy_In_Dialog_{linenum}_ ua="na">Yes</Use_OB_Proxy_In_Dialog_{linenum}_>
+  <Register_{linenum}_ ua="na">Yes</Register_{linenum}_>
+  <Make_Call_Without_Reg_{linenum}_ ua="na">No</Make_Call_Without_Reg_{linenum}_>
+  <Register_Expires_{linenum}_ ua="na">{regtimeout}</Register_Expires_{linenum}_>
+  <Ans_Call_Without_Reg_{linenum}_ ua="na">No</Ans_Call_Without_Reg_{linenum}_>
+  <Use_DNS_SRV_{linenum}_ ua="na">No</Use_DNS_SRV_{linenum}_>
+  <DNS_SRV_Auto_Prefix_{linenum}_ ua="na">No</DNS_SRV_Auto_Prefix_{linenum}_>
+  <Proxy_Fallback_Intvl_{linenum}_ ua="na">3600</Proxy_Fallback_Intvl_{linenum}_>
+  <Proxy_Redundancy_Method_{linenum}_ ua="na">Normal</Proxy_Redundancy_Method_{linenum}_> <!-- options: Normal/Based on SRV Port -->
+
+  <!-- Subscriber Information -->
+
+  <Display_Name_{linenum}_ ua="na">{rpid}</Display_Name_{linenum}_>
+  <User_ID_{linenum}_ ua="na">{username}</User_ID_{linenum}_>
+  <Password_{linenum}_ ua="na">{password}</Password_{linenum}_>
+  <Use_Auth_ID_{linenum}_ ua="na">No</Use_Auth_ID_{linenum}_>
+  <Auth_ID_{linenum}_ ua="na">{username}</Auth_ID_{linenum}_>
+  <Mini_Certificate_{linenum}_ ua="na"></Mini_Certificate_{linenum}_>
+  <SRTP_Private_Key_{linenum}_ ua="na"></SRTP_Private_Key_{linenum}_>
+
+  <!-- Audio Configuration -->
+
+  <Preferred_Codec_{linenum}_ ua="na">{%cisco/codec.xml:codecgroup[priority=1]::%}</Preferred_Codec_{linenum}_> <!-- options: G711u/G711a/G726-16/G726-24/G726-32/G726-40/G729a/G722 -->
+  <Use_Pref_Codec_Only_{linenum}_ ua="na">No</Use_Pref_Codec_Only_{linenum}_>
+  <Second_Preferred_Codec_{linenum}_ ua="na">{%cisco/codec.xml:codecgroup[priority=2]::%}</Second_Preferred_Codec_{linenum}_> <!-- options: Unspecified/G711u/G711a/G726-16/G726-24/G726-32/G726-40/G729a/G722 -->
+  <Third_Preferred_Codec_{linenum}_ ua="na">{%cisco/codec.xml:codecgroup[priority=3]::%}</Third_Preferred_Codec_{linenum}_> <!-- options: Unspecified/G711u/G711a/G726-16/G726-24/G726-32/G726-40/G729a/G722 -->
+  <G729a_Enable_{linenum}_ ua="na">Yes</G729a_Enable_{linenum}_>
+  <G723_Enable_{linenum}_ ua="na">Yes</G723_Enable_{linenum}_>
+  <G722_Enable_{linenum}_ ua="na">Yes</G722_Enable_{linenum}_>
+  <L16_Enable_{linenum}_ ua="na">Yes</L16_Enable_{linenum}_>
+  <G726-16_Enable_{linenum}_ ua="na">Yes</G726-16_Enable_{linenum}_>
+  <G726-24_Enable_{linenum}_ ua="na">Yes</G726-24_Enable_{linenum}_>
+  <G726-32_Enable_{linenum}_ ua="na">Yes</G726-32_Enable_{linenum}_>
+  <G726-40_Enable_{linenum}_ ua="na">Yes</G726-40_Enable_{linenum}_>
+  <Release_Unused_Codec_{linenum}_ ua="na">Yes</Release_Unused_Codec_{linenum}_>
+  <DTMF_Process_AVT_{linenum}_ ua="na">Yes</DTMF_Process_AVT_{linenum}_>
+  <Silence_Supp_Enable_{linenum}_ ua="na">No</Silence_Supp_Enable_{linenum}_>
+  <DTMF_Tx_Method_{linenum}_ ua="na">Auto</DTMF_Tx_Method_{linenum}_> <!-- options: InBand/AVT/INFO/Auto/InBand+INFO/AVT+INFO -->
+  <DTMF_Tx_Volume_for_AVT_Packet_{linenum}_ ua="na">0</DTMF_Tx_Volume_for_AVT_Packet_{linenum}_>
+
+  <!-- Dial Plan -->
+
+  <Dial_Plan_{linenum}_ ua="na">({dialplan})</Dial_Plan_{linenum}_>
+  <Caller_ID_Map_{linenum}_ ua="na"></Caller_ID_Map_{linenum}_>
+  <Enable_IP_Dialing_{linenum}_ ua="na">Yes</Enable_IP_Dialing_{linenum}_>
+  <Emergency_Number_{linenum}_ ua="na"></Emergency_Number_{linenum}_>

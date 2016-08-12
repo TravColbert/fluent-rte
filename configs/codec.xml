@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<registry>
+	<codec>
+		<datasource verb="GET">
+			<object>table</object>
+			<url>table.class.php</url>
+			<output>xml</output>
+		</datasource>
+		<datasource verb="POST">
+			<object>table</object>
+			<url>table.class.php</url>
+			<output>xml</output>
+		</datasource>
+		<keyfield>id</keyfield>
+		<fields>id,parameters,description</fields>
+		<successresult>codec</successresult>
+	</codec>
+</registry>

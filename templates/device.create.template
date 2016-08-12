@@ -1,0 +1,29 @@
+	<form name="create" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="device"/>
+	<input type="hidden" id="template" name="template" value="device.table.template"/>
+	<input type="hidden" id="action" name="action" value="create"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Create Device</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ID:</td><td><input type="text" id="id" name="id" value="{device/id}"/></td>
+			</tr>
+			<tr>
+				<td>Device Type:</td><td><select name="devicetype_id">{%devicetype.select.template:devicetype%}</select></td>
+			</tr>
+			<tr>
+				<td>Domain:</td><td><select name="domain_id">{%domain.select.template:domain%}</select></td>
+			</tr>
+			<tr>
+				<td>Description:</td><td><input type="text" id="description" name="description" value="{device/description}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="create"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

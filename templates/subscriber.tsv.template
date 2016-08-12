@@ -1,0 +1,7 @@
+/* repeat */
+Specific Reference:
+{subscriber[id=1]/id}	{subscriber[id=1]/username}	{subscriber[id=1]/password}	{subscriber[id=1]/domain}	{subscriber[id=1]/screenname}	{subscriber[id=1]/rpid}	{subscriber[id=1]/email_address}	{subscriber[id=1]/vmail}	{subscriber[id=1]/shared}	{subscriber[id=1]/enabled}
+Not Simple Reference:
+{subscriber/id}	{subscriber/username}	{subscriber/password}	{subscriber/domain}	{subscriber/screenname}	{subscriber/rpid}	{subscriber/email_address}	{subscriber/vmail}	{subscriber/shared}	{subscriber/enabled}
+Simple Reference:
+{id}	{username}	{password}	{domain}	{screenname}	{rpid}	{email_address}	{vmail}	{shared}	{enabled}

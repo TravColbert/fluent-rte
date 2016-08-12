@@ -1,0 +1,40 @@
+Fluent Add-On Tools
+
+= The OOo Import Tool =
+
+You can also use the OpenOffice Calc (spreadsheet) program to manage the
+provisioning data.  This might be especially interesting for two 
+reasons:
+
+ 1. Managing large amounts of data 
+ 2. Initially entering large amounts of data
+
+Firest we have to create the filter, then we can use the filter to open
+data pulled directly from the Provisioning system.
+ 
+To create the tool do the following:
+
+ 1. Open OpenOffice Calc
+ 2. Tools > XML Filter Settings
+ 3. Click "New" button
+ 4. Filter Name: Provisioning
+ 5. Application: OpenOffice Calc (*.ods)
+ 6. File Type: Provisioning
+ 7. File Extension: XML
+ 8. Click the "Transformation" tab
+ 9. At the "XSLT for import" enter http://server/xml_to_OOo.xml
+ 10. Click "OK" to save
+
+That created a "filter" that Open Office will use when it encounters an
+XML file of the Provisioning type.
+
+To use the tool do the following:
+
+ 1. Start OpenOffice
+ 2. File > Open > File Name: http://localhost/index.php?q=subscriber
+ 3. Select "Provisioning" in the file type dropdown box
+ 4. Click "OK".  The data will start importing
+ 5. OpenOffice Calc will automatically open with all the subscribers
+    data.
+
+

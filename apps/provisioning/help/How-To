@@ -1,0 +1,197 @@
+<pre>
+= How-To Provision Your VoIP Network with Fluent =
+
+Fluent Provisioning makes it fairly easy to manage the data required 
+to run a VoIP network.
+
+Use the following steps as a general rule of thumb.
+
+== 1. Create the "Domains" ==
+
+By "Domains" we mean the basic network-level things that are shared 
+across the whole network (or a large portion of the network).  Domains,
+in this context simply means a collection of network-level options that 
+may be applied to a group of SIP devices.
+
+Some of the network-level options managed through domains include:
+
+  * The primary and secondary SIP registrars on the network
+  * The network's time server
+  * The registration timeout in seconds
+  * The SIP proxy servers
+  * The voicemail server
+
+This data can be specified once in the domain settings then shared 
+across all devices that are assigned to that domain.
+
+You can have more than one domain if you want.
+
+For example, you might have several hundred SIP telephones on your 
+network.  You might want half of those phones to use "Server X" as their 
+primary registrar while the other half use "Server Y."
+
+In this case you could build two domains, each with the other server as 
+the primary registrar.  When building the devices you can assign half of
+the devices to domain 'A' while the other half of the SIP devices could 
+be assigned to domain 'B'.
+
+Another good use of domains is to better manage migrations.  You may 
+start with one set of configuration settings grouped in domain 'A' while
+an improved or target set of configurations is grouped in domain 'B'.  
+It is now easy to migrate phones from one set of configurations or 
+servers to another - simply by assigning the devices to the new domain.
+
+== 2. Prepare Basic Phone / Client Information ==
+
+It would probably be good to get the following information about the SIP 
+clients that will be connecting to your VoIP network:
+
+ * Makes (brands) for all SIP devices (e.g. Polycom, SNOM)
+ * Model names for all phones (e.g. SoundPoint, 6757i)
+ 
+Ensure that your list is accurate.
+
+=== 2a. Brands ===
+
+It is good to note the brand of the telephone or SIP device because it 
+will help you accurately identify and manage the device later.
+
+Some examples of brands are: 
+
+ * Polycom
+ * SNOM
+ * Aastra
+ * Quintum
+ * Grandstream
+ * Cisco/Linksys
+
+=== 2b. Model Names / Number ===
+
+Similarly, the model of the SIP device will help you accurately identify 
+and manage the device.  Model names also make it easier to provision 
+features for phones.
+
+Some models within a brand have substantially different capabilities.
+
+It may be necessary to specify, for example: 
+
+ * Brand X - Non-HD
+ * Brand X - HD-capable
+ 
+or something similar.
+
+This is important because one of the important steps at this point is to 
+assign a "template" for the device types you have defined.  The template 
+defines the base configuration for that type of phone.  So, for example, 
+imagine that you had a fleet of the above "Brand-X" phones.  Some are HD 
+(High-Definition capable) and others are not HD.  The HD-capable phones 
+require a diferent set of Voice Codecs than the non-HD phones.  Their 
+codec configuration is substantially different then their non-HD 
+brothers.  In this case, it might be best to create an HD template and a
+non-HD template for the two sets of phones.
+
+Only experience will tell whether it is really necessary to make these 
+types of distinctions.  Some phones are quite resilient and gracefully 
+handle situations where a codec is specified yet the phone is incapable 
+of using that codec, for example.
+
+== 3. Prepare the Subscribers (SIP Accounts) ==
+
+Next, we shall create a list of all subscribers (SIP accounts) expected 
+to operate on the network.
+
+As a general rule, every real "phone number" on your network will be a 
+SIP Account or subscriber.
+ 
+Therefore, it would be good to think about the number scheme that shall 
+be used on your network and prepare a list of all the numbers that shall 
+be used.
+
+There are many references that can be found elsewhere on this subject.
+
+Suffice it to say that every "destination" on your voice network will 
+likely be a "subscriber." 
+
+Give some consideration to the other meta-data associated with the voice 
+destinations on your network.  For example, what will be the caller-ID's 
+for your endpoints?  Will there be a voice-mail box for that SIP 
+account?  If so, what will the voice-mail number be?
+
+These are some of the details that are requested when configuring SIP
+accounts:
+
+ * Username - the SIP account name.  The SIP "number" to reach that 
+ endpoint
+ * Password - the password that the phone will use when registering as 
+ the SIP account (above)
+ * The SIP domain
+ * Display Name
+ * Caller ID - what appears on a callee's telephone when a caller calls
+ * Line Enabled - is the line even enabled?
+
+== 4. Create the device records ==
+
+Here is where we actually create software representations of the real 
+phones.  This is also where we apply the above created device-types to 
+real phones.
+
+Devices are represented in the system under their MAC addresses.
+
+The MAC address usually appears under or behind the SIP telephone.  For 
+some models, like SNOM, the MAC address can be retrieved from the built-
+in web management page for the device.
+
+The MAC address will be 12 characters long containing numbers (0-9) and 
+letters from A-Z either in upper or lowercase.
+
+Choose the device type.  You will notice that the device types will 
+appear in lists derived from the combination of the brand and make of 
+the device.  This should make the selection process easier.
+
+You may also add a brief description of the device.  This is quite 
+helpful as the MAC address has no logical significance for someone 
+managing the fleet of phones.  The description field can be used to 
+provide further helpful details about that specific device.
+
+Some exampled of the kind of details you might like to include are:
+
+ * The expected installation location of the device
+ * who might be using the device
+ * function of the device
+ 
+It should be noted that the description fields for any of the objects 
+managed by the provisioning app have no functional significance besides 
+perhaps making it easier to select objects from large lists.
+
+== 5. Add some lines to the devices ==
+
+Devices have been created and assigned to device types and domains.  SIP 
+accounts have been created.  Now, all that is left is to create what we 
+call 'lines' - the assignment of one or more SIP accounts to a device.
+
+To create a line do the following:
+
+ 1. Pick a device from the list.  The 'make', 'model', description, and 
+ the numer of already attached lines will appear in the list.
+ 2. Pick the SIP account in the next drop-down list.  The description 
+ and sip accountname will appear in the list.
+ 3. Finally, pick the number of the line.  The number of the line 
+ equates directly with the "lines" that the phone is capable of 
+ managing.  Many SIP phones support multiple "lines" and often have 
+ several buttons on the keypad representing those lines.
+ 
+ Put a number in the field that represents the line number of the phone.
+ 
+ Note: we recommend at least assigning a line "1".
+ 
+Once all the above fields have been selected the line will be created 
+when you click the 'create' button.
+
+At this point all of the necessary objects have been created.
+
+A phone with a mac address corresponding to one of the created devices 
+in the system should have a full set of configuration file generated for 
+it as it boots and requests them from the provisioning server.
+
+To test you new setup look at the Testing document.
+</pre>

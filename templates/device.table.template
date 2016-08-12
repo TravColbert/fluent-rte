@@ -1,0 +1,9 @@
+/* repeat */
+<table class="reporttable" id="device">
+<thead>
+<tr><th>Device ID (MAC Address)</th><th>Device Type ID</th><th>Domain ID</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr class="reportrecord" id="{id}"><td>{id}</td><td>{devicetype_id}</td><td>{domain_id}</td><td>{description}</td></tr>
+</tbody>
+</table>

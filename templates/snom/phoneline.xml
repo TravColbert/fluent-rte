@@ -1,0 +1,17 @@
+<user_realname idx="{linenum}" perm="RW">{rpid}</user_realname>
+<user_name idx="{linenum}" perm="RW">{username}</user_name>
+<user_pname idx="{linenum}" perm="RW">{username}</user_pname>
+<user_host idx="{linenum}" perm="RW">{proxy1}</user_host>
+<user_pass idx="{linenum}" perm="RW">{password}</user_pass>
+<user_mailbox idx="{linenum}" perm="RW">{vmail}</user_mailbox>
+<user_symmetrical_rtp idx="{linenum}" perm="R">off</user_symmetrical_rtp>
+<user_idle_text idx="{linenum}" perm="RW">{screenname}</user_idle_text>
+<user_outbound idx="{linenum}" perm="RW">sip:{outproxy}:{outproxyport};transport=tls</user_outbound>
+<record_missed_calls idx="{linenum}" perm="R">off</record_missed_calls>
+<codec1_name idx="{linenum}" perm="RW">9</codec1_name>
+<codec2_name idx="{linenum}" perm="RW">0</codec2_name>
+<codec3_name idx="{linenum}" perm="RW">8</codec3_name>
+<codec4_name idx="{linenum}" perm="RW">2</codec4_name>
+<codec5_name idx="{linenum}" perm="RW">3</codec5_name>
+<codec6_name idx="{linenum}" perm="RW">18</codec6_name>
+<codec7_name idx="{linenum}" perm="RW">4</codec7_name>

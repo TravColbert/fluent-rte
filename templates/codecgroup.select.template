@@ -1,0 +1,2 @@
+/* repeat */
+<option value="{id}">{domain} {codec_id} ({priority})</option>

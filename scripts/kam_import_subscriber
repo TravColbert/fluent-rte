@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wget http://$1/index.php\?q=subscriber\&template=subscriber.csv.template -O subscriber.list
+
+awk 'BEGIN { FS = "," }
+{ system("kamctl add "$2" "$3) }' ./subscriber.list

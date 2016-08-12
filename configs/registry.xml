@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<registry>
+	<config>
+		<appname>Fluent RTE</appname>
+		<logger>logger</logger>
+		<db>db</db>
+		<dbsetting>host=127.0.0.1 dbname=provisioning user=provisioning</dbsetting>
+		<modelpath>models/</modelpath>
+		<viewpath>views/</viewpath>
+		<xmldatapath>xmldata/</xmldatapath>
+		<xpathregex>/^([^\[\/]*)\/?(.*$)/</xpathregex>
+	</config>
+		<!-- Some 'objects' are pseudo-objects like 'sipdevice' and 
+			 'devicesetting'.  They are more like collections or views.
+			 So, you can't have a POST method for them.
+		  -->
+	<sipdevice>
+		<datasource verb="GET">
+			<object>table</object>
+			<url>table.class.php</url>
+			<output>xml</output>
+		</datasource>
+	</sipdevice>
+	<devicesetting>
+		<datasource verb="GET">
+			<object>table</object>
+			<url>table.class.php</url>
+			<output>xml</output>
+		</datasource>
+	</devicesetting>
+	<template verb="GET">
+		<output>template</output>
+	</template>
+</registry>

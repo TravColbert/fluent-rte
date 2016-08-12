@@ -1,0 +1,9 @@
+/* repeat */
+<table class="reporttable" id="codec">
+<thead>
+<tr><th>Codec Name</th><th>Parameters</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr class="reportrecord" id="{id}"><td>{id}</td><td>{parameters}</td><td>{description}</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,45 @@
+	<form name="edit" action="/index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="subscriber"/>
+	<input type="hidden" id="template" name="template" value="subscriber.table.template"/>
+	<input type="hidden" id="action" name="action" value="delete"/>
+	<input type="hidden" id="id" name="id" value="{subscriber/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Delete Subscriber</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Username:</td><td>{subscriber/username}</td>
+			</tr>
+			<tr>
+				<td>Password:</td><td>{subscriber/password}</td>
+			</tr>
+			<tr>
+				<td>Domain:</td><td>{subscriber/domain}</td>
+			</tr>
+			<tr>
+				<td>Display Name:</td><td>{subscriber/screenname}</td>
+			</tr>
+			<tr>
+				<td>Caller ID:</td><td>{subscriber/rpid}</td>
+			</tr>
+			<tr>
+				<td>Email Address:</td><td>{subscriber/email_address}</td>
+			</tr>
+			<tr>
+				<td>Voice Mail Number:</td><td>{subscriber/vmail}</td>
+			</tr>
+			<tr>
+				<td>Shared Line:</td><td>{subscriber/shared}</td>
+			</tr>
+			<tr>
+				<td>Line Enabled:</td><td>{subscriber/enabled}</td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="delete"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

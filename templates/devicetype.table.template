@@ -1,0 +1,9 @@
+/* repeat */
+<table class="reporttable" id="devicetype">
+<thead>
+<tr><th>Make</th><th>Model</th><th>Template</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr class="reportrecord" id="{id}"><td>{make}</td><td>{model}</td><td>{template}</td><td>{description}</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,2 @@
+/* repeat */
+<tr><td>{username}</td><td>{password}</td><td>{domain}</td><td>{screenname}</td><td>{rpid}</td><td>{email_address}</td><td>{vmail}</td><td>{shared}</td><td>{enabled}</td></tr>

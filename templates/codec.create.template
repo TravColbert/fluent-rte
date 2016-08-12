@@ -1,0 +1,26 @@
+	<form name="create" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="codec"/>
+	<input type="hidden" id="template" name="template" value="codec.table.template"/>
+	<input type="hidden" id="action" name="action" value="create"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Create Codec</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Codec:</td><td><input type="text" id="id" name="id" value="{codec/id}"/></td>
+			</tr>
+			<tr>
+				<td>Parameters:</td><td><input type="text" id="parameters" name="parameters" value="{codec/parameters}"/></td>
+			</tr>
+			<tr>
+				<td>Description:</td><td><input type="text" id="description" name="description" value="{codec/description}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="create"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

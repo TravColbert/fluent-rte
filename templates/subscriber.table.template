@@ -1,0 +1,9 @@
+/* repeat */
+<table class="reporttable" id="subscriber">
+<thead>
+<tr><th>Username</th><th>Password</th><th>Domain</th><th>Screenname</th><th>Caller ID</th><th>Email Address</th><th>Voice Mail Number</th><th>Shared Line</th><th>Enabled</th></tr>
+</thead>
+<tbody>
+<tr class="reportrecord" id="{id}"><td>{username}</td><td>{password}</td><td>{domain}</td><td>{screenname}</td><td>{rpid}</td><td>{email_address}</td><td>{vmail}</td><td>{shared}</td><td>{enabled}</td></tr>
+</tbody>
+</table>

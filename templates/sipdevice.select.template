@@ -1,0 +1,2 @@
+/* repeat */
+<option value="{id}">{id} : {make} {model} "{description}" with {totallines} configured lines</option>

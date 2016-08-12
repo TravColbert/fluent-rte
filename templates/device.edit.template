@@ -1,0 +1,27 @@
+	<form name="edit" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="device"/>
+	<input type="hidden" id="template" name="template" value="device.table.template"/>
+	<input type="hidden" id="action" name="action" value="edit"/>
+	<input type="hidden" id="id" name="id" value="{device/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Edit Device {device/id}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Device Type:</td><td><select name="devicetype_id">{%devicetype.select.template:devicetype%}</select><input type="hidden" class="origselectedval" id="orig_devicetype_id" name="orig_devicetype_id" value="{device/devicetype_id}"/></td>
+			</tr>
+			<tr>
+				<td>Domain:</td><td><select name="domain_id">{%domain.select.template:domain%}</select><input type="hidden" class="origselectedval" id="orig_domain_id" name="orig_domain_id" value="{device/domain_id}"/></td>
+			</tr>
+			<tr>
+				<td>Description:</td><td><input type="text" id="description" name="description" value="{device/description}"/><input type="hidden" id="orig_description" name="orig_description" value="{device/description}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="edit"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

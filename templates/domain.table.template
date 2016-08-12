@@ -1,0 +1,9 @@
+/* repeat */
+<table class="reporttable" id="domain">
+<thead>
+<tr><th>Domain Name</th><th>Registrar 1</th><th>Registrar 2</th><th>Proxy 1</th><th>Proxy 2</th><th>Outbound Proxy</th><th>Music on Hold URL</th><th>Time Server</th><th>Registration Timeout</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr class="reportrecord" id="{id}"><td>{domain}</td><td>{reg1}</td><td>{reg2}</td><td>{proxy1}</td><td>{proxy2}</td><td>{outproxy}</td><td>{mohurl}</td><td>{time}</td><td>{regtimeout}</td><td>{description}</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,50 @@
+/* preprocessor=devices/snom/preprocessor.php */
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+<phone-settings>
+
+<user_realname idx="1" perm="RW">{devicesetting[linenum=1]/rpid}</user_realname>
+<user_name idx="1" perm="RW">{devicesetting[linenum=1]/username}</user_name>
+<user_pname idx="1" perm="RW">{devicesetting[linenum=1]/username}</user_pname>
+<user_host idx="1" perm="RW">{devicesetting[linenum=1]/proxy1}</user_host>
+<user_pass idx="1" perm="RW">{devicesetting[linenum=1]/password}</user_pass>
+<user_mailbox idx="1" perm="RW">{devicesetting[linenum=1]/vmail}</user_mailbox>
+<user_symmetrical_rtp idx="1" perm="R">off</user_symmetrical_rtp>
+<user_idle_text idx="1" perm="RW">{devicesetting[linenum=1]/screenname}</user_idle_text>
+<user_outbound idx="1" perm="RW">sip:{devicesetting[linenum=1]/outproxy}:{devicesetting[linenum=1]/outproxyport};transport=tls</user_outbound>
+<record_missed_calls idx="1" perm="R">off</record_missed_calls>
+<codec1_name idx="1" perm="RW">9</codec1_name>
+<codec2_name idx="1" perm="RW">0</codec2_name>
+<codec3_name idx="1" perm="RW">8</codec3_name>
+<codec4_name idx="1" perm="RW">2</codec4_name>
+<codec5_name idx="1" perm="RW">3</codec5_name>
+<codec6_name idx="1" perm="RW">18</codec6_name>
+<codec7_name idx="1" perm="RW">4</codec7_name>
+
+{%phoneline.xml::block:2%}
+
+<language perm="!">English</language>
+<web_language perm="RW">English</web_language>
+<timezone perm="R">USA-5</timezone>
+<tone_scheme perm="R">USA</tone_scheme>
+<date_us_format perm="R">on</date_us_format>
+<time_24_format perm="R">off</time_24_format>
+
+<ntp_server perm="R">{devicesetting[linenum=1]/time}</ntp_server>
+
+</phone-settings>
+
+<functionKeys>
+
+<fkey idx="0" context="active" perm="">line</fkey>
+<fkey idx="1" context="active" perm="">line</fkey>
+<fkey idx="2" context="active" perm="">line</fkey>
+<fkey idx="5" context="active" perm="">line</fkey>
+
+</functionKeys>
+
+<dialplan>
+{devicesetting[linenum=1]/dialplan}
+</dialplan>
+
+</settings>

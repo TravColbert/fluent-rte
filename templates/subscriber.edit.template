@@ -1,0 +1,45 @@
+	<form name="edit" action="/index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="subscriber"/>
+	<input type="hidden" id="template" name="template" value="subscriber.table.template"/>
+	<input type="hidden" id="action" name="action" value="edit"/>
+	<input type="hidden" id="id" name="id" value="{subscriber/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Edit Subscriber</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Username:</td><td><input type="text" id="username" name="username" value="{subscriber/username}"/><input type="hidden" id="orig_username" name="orig_username" value="{subscriber/username}"/></td>
+			</tr>
+			<tr>
+				<td>Password:</td><td><input type="text" id="password" name="password" value="{subscriber/password}"/><input type="hidden" id="orig_password" name="orig_password" value="{subscriber/password}"/></td>
+			</tr>
+			<tr>
+				<td>Domain:</td><td><input type="text" id="domain" name="domain" value="{subscriber/domain}"/><input type="hidden" id="orig_domain" name="orig_domain" value="{subscriber/domain}"/></td>
+			</tr>
+			<tr>
+				<td>Display Name:</td><td><input type="text" id="screenname" name="screenname" value="{subscriber/screenname}"/><input type="hidden" id="orig_screenname" name="orig_screenname" value="{subscriber/screenname}"/></td>
+			</tr>
+			<tr>
+				<td>Caller ID:</td><td><input type="text" id="rpid" name="rpid" value="{subscriber/rpid}"/><input type="hidden" id="orig_rpid" name="orig_rpid" value="{subscriber/rpid}"/></td>
+			</tr>
+			<tr>
+				<td>Email Address:</td><td><input type="text" id="email_address" name="email_address" value="{subscriber/email_address}"/><input type="hidden" id="orig_email_address" name="orig_email_address" value="{subscriber/email_address}"/></td>
+			</tr>
+			<tr>
+				<td>Voice Mail Number:</td><td><input type="text" id="vmail" name="vmail" value="{subscriber/vmail}"/><input type="hidden" id="orig_vmail" name="orig_vmail" value="{subscriber/vmail}"/></td>
+			</tr>
+			<tr>
+				<td>Shared Line:</td><td><input type="text" id="shared" name="shared" value="{subscriber/shared}"/><input type="hidden" id="orig_shared" name="orig_shared" value="{subscriber/shared}"/></td>
+			</tr>
+			<tr>
+				<td>Line Enabled:</td><td><input type="text" id="enabled" name="enabled" value="{subscriber/enabled}"/><input type="hidden" id="orig_enabled" name="orig_enabled" value="{subscriber/enabled}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="edit"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

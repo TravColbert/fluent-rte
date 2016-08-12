@@ -1,0 +1,30 @@
+	<form name="delete" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="devicetype"/>
+	<input type="hidden" id="template" name="template" value="devicetype.table.template"/>
+	<input type="hidden" id="action" name="action" value="delete"/>
+	<input type="hidden" id="id" name="id" value="{devicetype/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<td>Action:</td><td>Delete Device Type</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Make:</td><td>{devicetype/make}</td>
+			</tr>
+			<tr>
+				<td>Model:</td><td>{devicetype/model}</td>
+			</tr>
+			<tr>
+				<td>Template:</td><td>{devicetype/template}</td>
+			</tr>
+            <tr>
+                <td>Description:</td><td>{devicetype/description}</td>
+            </tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="delete"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

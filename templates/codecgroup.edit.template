@@ -1,0 +1,27 @@
+	<form name="edit" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="codecgroup"/>
+	<input type="hidden" id="template" name="template" value="codecgroup.table.template"/>
+	<input type="hidden" id="action" name="action" value="edit"/>
+	<input type="hidden" id="id" name="id" value="{codecgroup/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Edit Codec Group</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Domain:</td><td><select name="domain_id">{%domain.select.template:domain%}</select><input type="hidden" class="origselectedval" id="orig_domain_id" name="orig_domain_id" value="{codecgroup/domain_id}"/></td>
+			</tr>
+			<tr>
+				<td>Codec:</td><td><select name="codec_id">{%codec.select.template:codec%}</select><input type="hidden" class="origselectedval" id="orig_codec_id" name="orig_codec_id" value="{codecgroup/codec_id}"/></td>
+			</tr>
+			<tr>
+				<td>Priority:</td><td><input type="text" id="priority" name="priority" value="{codecgroup/priority}"/><input type="hidden" id="orig_priority" name="orig_priority" value="{codecgroup/priority}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="edit"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

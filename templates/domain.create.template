@@ -1,0 +1,65 @@
+	<form name="create" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="domain"/>
+	<input type="hidden" id="template" name="template" value="domain.table.template"/>
+	<input type="hidden" id="action" name="action" value="create"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Create Domain</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Domain Name:</td><td><input type="text" id="domain" name="domain" value="{domain/domain}"/></td>
+			</tr>
+			<tr>
+				<td>Registrar 1:</td><td><input type="text" id="reg1" name="reg1" value="{domain/reg1}"/></td>
+			</tr>
+			<tr>
+				<td>Registrar 1 Port:</td><td><input type="text" id="reg1port" name="reg1port" value="{domain/reg1port}"/></td>
+			</tr>
+			<tr>
+				<td>Registrar 2:</td><td><input type="text" id="reg2" name="reg2" value="{domain/reg2}"/></td>
+			</tr>
+			<tr>
+				<td>Registrar 2 Port:</td><td><input type="text" id="reg2port" name="reg2port" value="{domain/reg2port}"/></td>
+			</tr>
+			<tr>
+				<td>Proxy 1:</td><td><input type="text" id="proxy1" name="proxy1" value="{domain/proxy1}"/></td>
+			</tr>
+			<tr>
+				<td>Proxy 1 Port:</td><td><input type="text" id="proxy1port" name="proxy1port" value="{domain/proxy1port}"/></td>
+			</tr>
+			<tr>
+				<td>Proxy 2:</td><td><input type="text" id="proxy2" name="proxy2" value="{domain/proxy2}"/></td>
+			</tr>
+			<tr>
+				<td>Proxy 2 Port:</td><td><input type="text" id="proxy2port" name="proxy2port" value="{domain/proxy2port}"/></td>
+			</tr>
+			<tr>
+				<td>Outbound Proxy:</td><td><input type="text" id="outproxy" name="outproxy" value="{domain/outproxy}"/></td>
+			</tr>
+			<tr>
+				<td>Outbound Proxy Port:</td><td><input type="text" id="outproxyport" name="outproxyport" value="{domain/outproxyport}"/></td>
+			</tr>
+			<tr>
+				<td>Music on Hold URL:</td><td><input type="text" id="mohurl" name="mohurl" value="{domain/mohurl}"/></td>
+			</tr>
+			<tr>
+				<td>Time Server:</td><td><input type="text" id="time" name="time" value="{domain/time}"/></td>
+			</tr>
+			<tr>
+				<td>Registration Timeout:</td><td><input type="text" id="regtimeout" name="regtimeout" value="{domain/regtimeout}"/></td>
+			</tr>
+			<tr>
+				<td>Dialplan:</td><td><input type="text" id="dialplan" name="dialplan" value="{domain/dialplan}"/></td>
+			</tr>
+			<tr>
+				<td>Description:</td><td><input type="text" id="description" name="description" value="{domain/description}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="create"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

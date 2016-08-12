@@ -1,0 +1,27 @@
+	<form name="edit" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="codecgroup"/>
+	<input type="hidden" id="template" name="template" value="codecgroup.table.template"/>
+	<input type="hidden" id="action" name="action" value="delete"/>
+	<input type="hidden" id="id" name="id" value="{codecgroup/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Delete Codec Group</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Domain:</td><td>{codecgroup/domain}</td>
+			</tr>
+			<tr>
+				<td>Codec:</td><td>{codecgroup/codec_id} {codecgroup/description}</td>
+			</tr>
+			<tr>
+				<td>Priority:</td><td>{codecgroup/priority}</td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="delete"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

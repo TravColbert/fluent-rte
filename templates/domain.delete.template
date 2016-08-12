@@ -1,0 +1,66 @@
+	<form name="delete" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="domain"/>
+	<input type="hidden" id="template" name="template" value="domain.table.template"/>
+	<input type="hidden" id="action" name="action" value="delete"/>
+	<input type="hidden" id="id" name="id" value="{domain/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<td>Action:</td><td>Delete Domain</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Domain Name:</td><td>{domain/domain}</td>
+			</tr>
+			<tr>
+				<td>Registrar 1:</td><td>{domain/reg1}</td>
+			</tr>
+			<tr>
+				<td>Registrar 1 Port:</td><td>{domain/reg1port}</td>
+			</tr>
+			<tr>
+				<td>Registrar 2:</td><td>{domain/reg2}</td>
+			</tr>
+			<tr>
+				<td>Registrar 2 Port:</td><td>{domain/reg2port}</td>
+			</tr>
+			<tr>
+				<td>Proxy 1:</td><td>{domain/proxy1}</td>
+			</tr>
+			<tr>
+				<td>Proxy 1 Port:</td><td>{domain/proxy1port}</td>
+			</tr>
+			<tr>
+				<td>Proxy 2:</td><td>{domain/proxy2}</td>
+			</tr>
+			<tr>
+				<td>Proxy 2 Port:</td><td>{domain/proxy2port}</td>
+			</tr>
+			<tr>
+				<td>Outbound Proxy:</td><td>{domain/outproxy}</td>
+			</tr>
+			<tr>
+				<td>Outbound Proxy Port:</td><td>{domain/outproxyport}</td>
+			</tr>
+			<tr>
+				<td>Music on Hold URL:</td><td>{domain/mohurl}</td>
+			</tr>
+			<tr>
+				<td>Time Server:</td><td>{domain/time}</td>
+			</tr>
+			<tr>
+				<td>Registration Timeout:</td><td>{domain/regtimeout}</td>
+			</tr>
+			<tr>
+				<td>Dialplan:</td><td>{domain/dialplan}</td>
+			</tr>
+			<tr>
+				<td>Description:</td><td>{domain/description}</td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="delete"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

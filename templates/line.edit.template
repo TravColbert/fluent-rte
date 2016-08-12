@@ -1,0 +1,27 @@
+	<form name="create" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="line"/>
+	<input type="hidden" id="template" name="template" value="line.table.template"/>
+	<input type="hidden" id="action" name="action" value="edit"/>
+	<input type="hidden" id="id" name="id" value="{line/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Edit Line</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Device:</td><td><select name="device_id">{%sipdevice.select.template:sipdevice:%}</select><input type="hidden" class="origselectedval" id="orig_device_id" name="orig_device_id" value="{line/device_id}"/></td>
+			</tr>
+			<tr>
+				<td>SIP Account:</td><td><select name="subscriber_id">{%subscriber.select.template:subscriber%}</select><input type="hidden" class="origselectedval" id="orig_subscriber_id" name="orig_subscriber_id" value="{line/subscriber_id}"/></td>
+			</tr>
+			<tr>
+				<td>Line Number:</td><td><input type="text" id="linenum" name="linenum" value="{line/linenum}"/><input type="hidden" id="orig_linenum" name="orig_linenum" value="{line/linenum}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="edit"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

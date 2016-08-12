@@ -1,0 +1,26 @@
+	<form name="create" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="line"/>
+	<input type="hidden" id="template" name="template" value="line.table.template"/>
+	<input type="hidden" id="action" name="action" value="create"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Create Line</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Device:</td><td><select name="device_id">{%sipdevice.select.template:sipdevice:%}</select></td>
+			</tr>
+			<tr>
+				<td>SIP Account:</td><td><select name="subscriber_id">{%subscriber.select.template:subscriber%}</select></td>
+			</tr>
+			<tr>
+				<td>Line Number:</td><td><input type="text" id="linenum" name="linenum" value="{line/linenum}"/></td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="create"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

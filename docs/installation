@@ -1,0 +1,142 @@
+= How to Install Fluent =
+
+The core of Fluent is Fluent-RTE.  Fluent RTE is the Reporting and 
+Templating Engine on top of which other apps may be built.
+
+Fluent is primarily a PHP web application so the 'installation' of the 
+engine is nothing more than exploding the Fluent package files to the 
+root of your local web server's HTDOCS directory.  We have developed on 
+the Lighttpd web server.  It is currently our preferred web server.
+Installing for Apache shouldn't be too difficult.
+
+Some Fluent apps (like Fluent Provisioning) can use a database, 
+therefore we will also provide information for how to prepare the 
+database.  We have developed our apps on PostgreSQL although future 
+improvements to the system will make the SQL engine you use irrelevant.
+
+Please note that we have also done our development on the Debian family 
+of Linuxes and on Alpine Linux.
+
+== Basic Install of Fluent RTE ==
+
+1. Install the web server using your preferred package management tool. 
+   We recommend the Lighttpd web server.
+   
+   {{{
+   sudo apt-get install lighttpd
+   }}}
+
+2. Enable fastcgi on lighttpd server:
+
+   {{{
+   sudo lighttpd-enable-mod fastcgi
+   }}}
+
+3. Enable mod_rewrite in the lighttpd.conf file (usually at 
+   /etc/lighttpd/lighttpd.conf).  Usually you simply uncomment the 
+   mod_rewrite line in the configuration file.
+
+2. Install PHP.
+   
+   {{{
+   sudo apt-get install php5-cgi
+   }}}
+   
+   The above two steps may be accomplished as one depending on your 
+   distribution.
+
+3. Explode the Fluent core files to the root of your web server's htdocs
+   directory.
+
+4. Make sure that all of the scripts and files are properly owned.
+
+5. Restart lighttpd.  (e.g. /etc/init.d/lighttpd restart)
+
+6. Set configuration options for Fluent in the registry.xml config file
+
+== Install of SQL ==
+
+A SQL server is especially useful for the Fluent Provisioning app.  You 
+might choose to install PostgreSQL with the basic settings for Fluent 
+even if you will not be initially needing SQL.  Later, the SQL RDBMS 
+will be there which should make future installations of plug-in apps 
+easier.
+
+1. Install the SQL server using your preferred package management tool.
+   We recommend PostgreSQL.
+   
+   {{{
+   sudo apt-get install postgresql postgresql-client
+   }}}
+   
+   The above sample installation command will also install the '''pgsql''' 
+   Postgre SQL client.
+
+1b. Modify rights for local access to the PostgreSQL server.
+    This can be done by modifying PostgreSQL's configuration file.  The 
+    configuration file may be found at: 
+    /etc/postgresql/8.4/main/pg_hba.conf (Debian/Ubuntu)
+    
+    Where the line says:
+    {{{
+    local	all	postgres	ident
+    }}}
+    
+    ...change '''ident''' so that it says '''trust''' like:
+    
+    {{{
+    local	all	postgres	ident
+    }}}
+    
+    Do the same thing for the line that looks like this:
+    
+    {{{
+    host	all	all	127.0.0.1/32	trust
+    }}}
+    
+    Be sure to restart PostgreSQL by doing something like this:
+    
+    {{{
+    sudo /etc/init.d/postgresql-8.4 restart
+    }}}
+    
+    It is important to properly configure the permissions for PostgreSQL 
+    before the server goes into production.
+    
+2. Import and create Fluent Provisioning database.
+   The easiest way to do this is to do the following:
+   
+   {{{
+   psql -U postgres
+   \i /var/www/scripts/create_db.sql
+   \i /var/www/scripts/build_db.sql
+   }}}
+   
+   create_db.sql adds the database and database user that the 
+   provisioning software will use.
+   
+   build_db.sql builds the tables inside of the database.
+   
+   Optionally, you could add some sample data in the provisioning 
+   database to get you started:
+   
+   {{{
+   \i /var/www/scripts/sample_db.sql
+   }}}
+   
+2. Install the PHP5 database libraries
+
+   {{{
+   sudo apt-get install php5-pgsql
+   }}}
+   
+   and restart lighttpd:
+   
+   {{{
+   sudo /etc/init.d/lighttpd restart
+   }}}
+
+'''Basic Installation Complete'''
+
+At this point you should be able to point a web browser to http://the_host/apps/provisioning/
+and the Fluent Provisioning web page should appear.

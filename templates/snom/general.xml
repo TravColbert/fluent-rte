@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+<phone-settings>
+
+<language perm="!">English</language>
+<web_language perm="RW">English</web_language>
+<timezone perm="R">USA-5</timezone>
+<tone_scheme perm="R">USA</tone_scheme>
+<date_us_format perm="R">on</date_us_format>
+<time_24_format perm="R">off</time_24_format>
+
+<ntp_server perm="R">{devicesetting[linenum=1]/time}</ntp_server>
+
+</phone-settings>
+
+</settings>

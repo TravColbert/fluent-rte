@@ -1,0 +1,103 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0px;
+	margin: 0px;
+}
+
+#maintitle {
+	border-bottom: 2px solid #bce987;
+	padding-top: 1.5em;
+	padding-bottom: 2px;
+	padding-left: 1.2em;
+	font-size: 1.6em;
+	font-weight: bold;
+	color: white;
+	background: #88d332;
+	background-image:url('../images/bg.jpg');
+	background-repeat:no-repeat;
+	background-position:right center;
+}
+
+#mainmenu {
+	border-top: 2px solid #7ba7cb;
+	background: #2c6696;
+}
+
+#mainmenu a {
+	color: white;
+	border-right: 2px solid #7ba7cb;
+	padding-left: 2em;
+	padding-right: 1.5em;
+	font-size: 1em;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#mainmenu a#help {
+	color: white;
+	border-right: 0px;
+	padding-right: 2em;
+	padding-left: 1.5em;
+	font-size: 1em;
+	font-weight: bold;
+	float: right;
+	cursor: pointer;
+}
+
+.mainmenuhover {
+	background: #5f9acb;
+}
+
+#submenu {
+	border-top: 2px solid #7ba7cb;
+	margin-bottom: 2px;
+	background: #5f9acb;
+}
+
+#submenu a {
+	color: white;
+	padding-left: 2.5em;
+	padding-right: 1.5em;
+	font-size: .8em;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+table {
+	border-collapse: collapse;
+	font-size: .8em;
+}
+
+th {
+	border-right: 1px dotted white; 
+}
+
+td {
+	padding-left: 1em;
+	border-right: 1px dotted silver; 
+}
+
+table.reporttable {
+	width: 100%;
+}
+
+thead {
+	font-weight: normal;
+	background: #f4e48e;
+}
+
+tbody.reporttable {
+	cursor: pointer;
+}
+
+.oddrow {
+	background: #faf1c0;
+}
+
+a {
+	text-decoration: none;
+}
+
+span {
+	white-space: nowrap;
+}

@@ -1,0 +1,9 @@
+/* repeat */
+<table class="reporttable" id="line">
+<thead>
+<tr><th>Attached Device</th><th>Line Number</th><th>SIP Account Info</th></tr>
+</thead>
+<tbody>
+<tr class="reportrecord" id="{id}"><td>{device_id}</td><td>{linenum}</td><td>{%subscriber.table.template:subscriber[id='{subscriber_id}']%}</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,30 @@
+	<form name="create" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="devicetype"/>
+	<input type="hidden" id="template" name="template" value="devicetype.table.template"/>
+	<input type="hidden" id="action" name="action" value="create"/>
+	<input type="hidden" id="id" name="id" value=""/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Create Device Type</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Make:</td><td><input type="text" id="make" name="make" value="{devicetype/make}"/></td>
+			</tr>
+			<tr>
+				<td>Model:</td><td><input type="text" id="model" name="model" value="{devicetype/model}"/></td>
+			</tr>
+			<tr>
+				<td>Template:</td><td><input type="text" id="template" name="template" value="{devicetype/template}"/></td>
+			</tr>
+            <tr>
+                <td>Description:</td><td><input type="text" id="description" name="description" value="{devicetype/description}"/></td>
+            </tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="create"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>

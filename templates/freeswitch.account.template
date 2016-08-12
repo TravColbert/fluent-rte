@@ -1,0 +1,33 @@
+/* placeholderregex=|\^([^\^%]+)\^| subtemplateregex=|\^%([^\^\^]+)%\^| */
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="freeswitch/xml">
+<section name="directory" description="User Directory">
+<domain name="^subscriber/domain^">
+<params>
+<param name="dial-string" value="{presence_id=\${dialed_user}@\${dialed_domain}}\${sofia_contact(\${dialed_user}@\${dialed_domain})}"/>
+</params>
+<groups>
+<group name="default">
+<users>
+<user id="^subscriber/username^">
+    <params>
+      <param name="password" value="^subscriber/password^"/>
+      <param name="vm-password" value="^subscriber/username^"/>
+    </params>
+    <variables>
+      <variable name="toll_allow" value="domestic,international,local"/>
+      <variable name="accountcode" value="^subscriber/username^"/>
+      <variable name="user_context" value="default"/>
+      <variable name="effective_caller_id_name" value="^subscriber/rpid^"/>
+      <variable name="effective_caller_id_number" value="^subscriber/username^"/>
+      <variable name="outbound_caller_id_name" value="\$\${outbound_caller_name}"/>
+      <variable name="outbound_caller_id_number" value="\$\${outbound_caller_id}"/>
+      <variable name="callgroup" value="branchinternal"/>
+    </variables>
+  </user>
+</users>
+</group>
+</groups>
+</domain>
+</section>
+</document>

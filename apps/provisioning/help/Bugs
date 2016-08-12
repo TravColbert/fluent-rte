@@ -1,0 +1,43 @@
+<pre>
+Here is a list of known bugs and issues.  As issues are resolved we will 
+update this list.
+
+== Tested Browsers ==
+
+The app has been tested on:
+
+ * Gecko browsers - e.g. Firefox / Seamonkey / Ice Weasel
+ * Google Chrome
+
+It is not recommended to use this app on Internet Explorer < v8.
+
+== UI Issues ==
+ 
+The provisioning module is an AJAX app.  This leads to issues that we 
+are still working on such as:
+
+ * If you first click on a link sometimes the menu and title dissappear 
+ replaced by strange-looking pages.  This seems to be related to the 
+ AJAXical nature of the web app.  Usually, after clicking on the links 
+ the problem goes away.
+ 
+ * If you add/delete/edit objects the list does not automatically 
+ refresh indicating the changed objects.  Workaround: re-click on the 
+ link in question.  e.g. If you add a subscriber and the list does not 
+ reflect the change.  Click on "Accounts" > "Show Accounts" to refresh 
+ the list.  This problem seems to be related to browser caching issues. 
+
+== Operational Notes ==
+
+ * When you create a new object data is already present in the form's 
+ fields.  This was intended to be sort-of a feature.  The idea was to 
+ have "sample" data already present on the form to help in filling-out
+ the new object.  The data that is retrieved and put in the form is the 
+ data of the last object of the type you are creating.
+
+ * After you create a SIP device you cannot change the MAC address.  
+ This is intended since the MAC address is the ID for the device's 
+ record.  You should create a new device with the correct MAC address, 
+ make all the appropriate (re)assignments, then delete the erroneous
+ record.
+</pre>

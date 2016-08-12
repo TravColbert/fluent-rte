@@ -1,0 +1,367 @@
+<pre>
+= High-Level Introduction to the Fluent Reporting and Templating Engine =
+
+== Introduction ==
+
+Fluent's Provisioning module is a way to centrally manage and distribute 
+SIP device configurations.
+
+Externally, the provisioning system uses the HTTP protocol to 
+distribute the configurations and a templating engine to create the 
+configurations.
+
+This document attempts to explain how the back-end of the system works.
+
+== Two Pieces ==
+
+The back-end part of the system is built around two pieces:
+
+ 1. a querying engine
+ 2. a templating engine
+ 
+We start with the basic idea behind the querying engine:
+
+== 1. The Querying Engine ==
+
+From a lower-level perspective, the provisioning system takes diverse 
+datastores (LDAP, SQL, flat files) and exposes their data internally to 
+itself as standard, well-formed XML.
+
+Since the data is in well-formed XML, we can ask for pieces of the data
+by using XPath, one of the XML toolset's standardized querying syntaxes.
+
+This is good because now you don't have to worry about:
+
+ 1. Knowing where your data is (LDAP, flat file, SQL)
+ 2. Knowing how to query it
+ 
+As we know, LDAP's querying syntax is vastly different from SQL's (even
+between different SQL implementations) and your average plain text file 
+does not have a standard querying language at all.  So, using a 
+standardized querying syntax like XPath is a nice thing.
+
+The provisioning system's engine exposes the XPath querying syntax right
+through to the URL with a simple tag: "q=".
+
+Asking for data from the provisioning system's engine is easy.  Here are
+a few examples:
+
+Look for all SIP accounts:
+
+	q=subscriber
+	
+That is all that is required to get the "subscriber" list - all SIP 
+accounts (subscribers) in the provisioning system - no matter where the 
+SIP account data is actually stored.
+
+To ask for all of the subscribers that are ENABLED simply do:
+
+	q=subscriber[enabled='t']
+
+You might read the above query in english by saying: "Get me the 
+subscriber list WHERE the 'enabled' field equals 't' (for TRUE)."
+
+To ask for all of the usernames for all subscribers you can do:
+
+	q=subscriber/username
+	
+... and you will get a list of all usernames in the system.  The above 
+query in english would read: "Get me the subscriber list but only show 
+the username fields."
+
+You can combine the above two queries like this:
+
+	q=subscriber[enabled='t']/username
+	
+Which would mean: "Get me the subscriber list where the 'enabled' field
+equals 't' and just show the usernames."
+
+Simple.  All of the above queries are valid XPath queries.  For more 
+information on XPath's syntax see: 
+http://www.w3schools.com/xpath/xpath_syntax.asp
+
+You can do the same with: devices, devicesettings, devicetypes, lines, 
+and domains.
+
+(Note that the list of each provisioning object is named in the 
+singular.  Thus: device, devicesetting, devicetype, line, etc...)
+
+
+
+So, since XPath queries are URL-friendly, it shouldn't take too long to 
+see that you could build a very simple, rudementary reporting "app" by 
+doing exactly TWO things:
+
+ 1. Build a simple web page with just a few hyperlinks with the above
+queries as URLs.  Something like this would suffice:
+
+=====
+<html>
+<head>
+</head>
+<body>
+	<a href="http://srv.test.com/index.php?q=subscriber[enabled='t']/username">Enabled Users</a>
+</body>
+</html>
+=====
+
+The above would provide someone with a report of all enabled users on 
+the system.  Adding other hyperlinks to other reports would be trivial.
+
+The only sortcoming with the above would be that the data would be 
+presented (if you had a browser written in the last 5 years or so) in 
+somewhat "raw" XML.
+
+ 2. Thus, the second, and last thing, you would need to provide a basic 
+reporting app to someone would be to implement some tool to make the XML 
+"prettier" and more useful.  For example, the original purpose of the 
+provisioning system is to centrally configure SIP client devices.  The 
+raw XML, in itself is not very useful to a SIP device asking for its 
+configuration.  Therefore, we need a tool that arranges the requested 
+data and puts it in a format that the SIP device needs.
+
+XML's toolset comes with many provisions for presenting XML in a more 
+useful state.  There is XSLT, for example, but the provisioning system 
+introduces another way that you can do it:
+
+== The Templating Engine ==
+
+Since the provisioning system is architected as an MVC-style app we have 
+implemented a templating engine as a "view" that allows you to write 
+templates that provide placeholders for the internal XML data.
+
+Specifically, the templating engine allows exactly TWO things:
+
+ 1. Write text files that have little XPath queries (like above) in 
+ them.  This means that the template asks for data and puts it in the 
+ spot where the XPath query was embeded.
+ 
+ 2. Write text files that ask for other text files that do number 1 
+ (above).
+ 
+So, the provisioning system lets you build recursive templates that seek 
+their own data (or maybe other templates that seek their own data), 
+which, once completely resolved, is then sent to the client (e.g. a SIP
+telephone or a user's browser).
+
+It is the templating engine that allows the provisioning system to 
+dynamically build the configurations for the sip devices requesting 
+them.
+
+Here is an example of a template:
+
+=====
+/* repeat */
+Subscriber: {username}'s Caller ID is: {rpid}.<br>
+=====
+
+(The <br> at the end is just HTML so that the output looks ok in a 
+browser)
+
+If you put the above two lines in a file called 
+"templates/subscriber.demo.template" then 'ran' the query like this:
+
+  index.php?q=subscriber&template=subscriber.demo.template
+
+The result would look roughly like this (depends on what subscribers or 
+SIP accounts you've configured, obviously):
+
+  Subscriber: 25571's Caller ID is: Extension 25571
+  Subscriber: 25577's Caller ID is: Extension 25577
+  Subscriber: 25578's Caller ID is: Extension 25578
+  Subscriber: 25579's Caller ID is: Extension 25579
+  Subscriber: 25580's Caller ID is: Extension 25580
+  Subscriber: 25581's Caller ID is: Extension 25581
+  Subscriber: 25582's Caller ID is: Extension 25582
+  Subscriber: 25584's Caller ID is: Extension 25584
+
+You can see that the {---} placeholders have been replaced by the data.
+
+=== Invoking the Templating Engine ===
+
+From the above invocation of the template you can see that the 
+templating engine needs two things to work properly:
+
+ 1. The template that should be displayed.
+ 
+ 2. The base data that drives the population of the template.
+
+Requirement number 1 should be clear.  You must tell the templating 
+engine which template to display.  From the above example the template 
+is chosen through: template=subscriber.demo.template
+
+Actually, typing 'template' alone tells the engine to use the templating 
+view.  Remember, the templater is just one 'view' that the engine could 
+use.
+
+As for requirement number 2 : remember that templates have little 
+queries in them.  These little queries are expecting data to be present 
+somewhere so that the requested data can be fetched.  Thus, requirement 
+2 simply means that you should provide the 'base data' that the 
+template's queries need.
+
+One might wonder why we supply the data to the template by explicitly 
+specifying a 'pre-query' like: q=subscribers.
+
+It is true that the above example takes the whole set of subscribers and 
+presents it to the template.  We provide the data in two stages like 
+this because it allows the system to provide a preliminary set of data 
+that could change without having to change the details in the template 
+itself.  For example, we could change the output by modifying the 'q=' 
+part of the above invocation to something like this:
+
+index.php?q=subscriber[enabled='f']&template=subscriber.demo.template
+
+You can see that we have modified the preliminary query to just show the 
+disabled SIP accounts.  The template part of the above invocation would 
+not have changed.
+
+This should mean that one template could be used in multiple situations 
+by changing the preliminary query.
+
+And, since all of the above it URL-friendly you could build a simple 
+'app' that lists diferent things by changing the 'q=' part of the links. 
+You would not be required to build an "enabled subscribers template" and 
+a "disabled.subscribers.template".  One template works for both 
+applications.
+
+=== The Templates ===
+
+Templates are normally fetched from the /templates directory off the 
+engine's base directory.  Most templates follow the convention: 
+<base data type>.<action>.template.
+
+Examples:
+
+  * subscriber.table.template : print an html table of all subscribers
+  
+  * subscriber.csv.template : print a comma-separated-value file of all 
+  subscribers
+  
+  * device.delete.template : prints an HTML form that allows you to 
+  delete a device
+  
+  * line.create.template : prints an HTML form that allows you to create 
+  a new line
+  
+  * domain.edit.template : prints an HTML form that allows you to edit 
+  a domain
+  
+There are certain rules to how the templates work that need to be 
+explained now.
+
+==== The Repeat Directive ====
+
+Take the example of the 'subscriber.demo.template' template above.  Here 
+it is again:
+
+=====
+/* repeat */
+Subscriber: {username}'s Caller ID is: {rpid}.<br>
+=====
+
+This particular template is designed to produce a list.  We have 
+specified that using a special keyword at the top of the template:
+
+  /* repeat */
+  
+The "repeat" keyword basically implies: "for every XML 'object' found 
+repeat this line.  So, if you had ten subscriber objects in your data 
+the template will print ten lines similar to above but with the 
+subscriber's "username" and "callerid (rpid)" values inserted.
+
+The "repeat" keyword should be the first line in the template.  It is 
+removed from the resulting output.
+
+Now, if you REMOVE the "repeat" keyword something unexpected happens:
+nothing is output - just the text - not the data from the placeholder. 
+Why?
+
+This is because the "repeat" keyword implies that the templating engine 
+should iterate through each object, then run the query(ies) in the 
+placeholder(s) for each object.
+
+Whereas, when you remove the "repeat" keyword the templating engine 
+takes the whole chunk of XML as one unit and expects the queries in the 
+placeholders to specify exactly which piece of data should appear.
+
+To explain further, let's say you had subscriber data that looked like 
+this:
+
+=====
+<subscribers>
+	<subscriber>
+		<id>5</id>
+		<username>25571</username>
+		<password>25571</password>
+		<ha1/>
+		<ha1b/>
+		<domain>cde.network.net</domain>
+		<screenname>Test Extension 25571</screenname>
+		<rpid>Extension 25571</rpid>
+		<email_address>25571@cde.network.net</email_address>
+		<vmail>*7725571</vmail>
+		<shared>t</shared>
+		<enabled>t</enabled>
+	</subscriber>
+	<subscriber>
+		<id>7</id>
+		<username>25577</username>
+		<password>25577</password>
+		<ha1/>
+		<ha1b/>
+		<domain>cde.network.net</domain>
+		<screenname>Test Extension 25577</screenname>
+		<rpid>Extension 25577</rpid>
+		<email_address>25577@cde.network.net</email_address>
+		<vmail>*7725577</vmail>
+		<shared>t</shared>
+		<enabled>t</enabled>
+	</subscriber>
+<subscribers>
+=====
+
+This is how the XML data looks inside the engine.  It is a list of two 
+subscribers with username 25571 and 25577.  As we have read above - this 
+XML list is not how the data looks inside a SQL database or inside LDAP. 
+Whatever the data looks like in it's stored condition - it is 
+transformed into the above format inside the engine itself.
+
+Using the "repeat" directive makes the templating engine examine the 
+above data in two chunks: once for subscriber 25571 and then for 25577.
+
+So, by simply specifying {username}, {rpid}, etc. the templating engine 
+can easily pick the piece of data requested.
+
+But, when you remove the "repeat" tag the templating engine looks at the 
+above list as one big chunk so it doesn't know which {username} you 
+want.
+
+If you changed the little placeholders to look like this, for example:
+
+=====
+Subscriber: {subscriber[id=7]/username}'s Caller ID is surely not: {subscriber[id=5]/rpid}.<br>
+=====
+
+The output would be:
+
+  Subscriber: 25577's Caller ID is surely not: Extension 25571.
+
+Notice how you have given quite specific information in the template, 
+specifying exactly which subscriber data should be placed in which 
+placeholder.
+
+If you changed the little placeholders to look like this:
+
+=====
+Subscriber: {subscriber/username}'s Caller ID is surely not: {subscriber/rpid}.<br>
+=====
+
+(where the specific subscriber id's are not given)
+
+the templating engine simply picks the last subscriber data and 
+displays:
+
+  Subscriber: 25577's Caller ID is surely not: Test Extension 25577.
+
+</pre>

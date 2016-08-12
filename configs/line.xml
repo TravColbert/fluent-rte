@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<registry>
+    <line>
+    	<datasource verb="GET">
+			<object>table</object>
+			<url>table.class.php</url>
+			<output>xml</output>
+		</datasource>
+    	<datasource verb="POST">
+			<object>table</object>
+			<url>table.class.php</url>
+			<output>xml</output>
+		</datasource>
+		<keyfield>id</keyfield>
+		<fields>id:int,device_id,subscriber_id:int,linenum:int</fields>
+		<successresult>line</successresult>
+    </line>
+</registry>

@@ -1,0 +1,9 @@
+/* repeat */
+<table class="reporttable" id="codecgroup">
+<thead>
+<tr><th>Domain</th><th>Codec Name</th><th>Codec Priority</th><th>Codec Parameters</th><th>Codec Description</th></tr>
+</thead>
+<tbody>
+<tr class="reportrecord" id="{id}"><td>{domain}</td><td>{codec_id}</td><td>{priority}</td><td>{parameters}</td><td>{description}</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,2 @@
+/* repeat */
+<option value="{id}">{username}@{domain} {screenname}</option>

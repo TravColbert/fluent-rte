@@ -1,0 +1,30 @@
+<root>
+	<subscriber>
+		<id>1</id>
+		<username>1000</username>
+		<password>test123</password>
+		<ha1/>
+		<ha1b/>
+		<domain>10.244.194.104</domain>
+		<screenname>1000 (XML)</screenname>
+		<rpid>1000 bottles of beer</rpid>
+		<email_address>1000@test.net</email_address>
+		<vmail>*771000</vmail>
+		<shared>t</shared>
+		<enabled>t</enabled>
+	</subscriber>
+	<subscriber>
+		<id>2</id>
+		<username>2000</username>
+		<password>test123</password>
+		<ha1/>
+		<ha1b/>
+		<domain>10.244.194.104</domain>
+		<screenname>XML 2000</screenname>
+		<rpid>2000 Yeah</rpid>
+		<email_address>2000@test.net</email_address>
+		<vmail>*772000</vmail>
+		<shared>t</shared>
+		<enabled>t</enabled>
+	</subscriber>
+</root>

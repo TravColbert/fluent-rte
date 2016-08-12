@@ -1,0 +1,27 @@
+	<form name="edit" action="index.php" method="post">
+	<input type="hidden" id="resource" name="resource" value="codec"/>
+	<input type="hidden" id="template" name="template" value="codec.table.template"/>
+	<input type="hidden" id="action" name="action" value="delete"/>
+	<input type="hidden" id="id" name="id" value="{codec/id}"/>
+	<table>
+		<thead>
+			<tr>
+				<th>Action:</th><th>Delete Codec</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Codec Name:</td><td>{codec/id}</td>
+			</tr>
+			<tr>
+				<td>Parameters:</td><td>{codec/parameters}</td>
+			</tr>
+			<tr>
+				<td>Description:</td><td>{codec/description}</td>
+			</tr>
+			<tr>
+				<td> </td><td><input type="submit" id="actionbutton" value="delete"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
