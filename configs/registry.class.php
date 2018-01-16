@@ -59,6 +59,7 @@ class registry {
 		 * Fall back to the main registry file if you can't find the 
 		 * requested 'resource.xml' file.
 		 */
+		$returnstring = "";
 		if(isset($resource) && is_readable("configs/".$resource.".xml")) {
 			// get the right registry file
 			$tmpregistry = $this->controller->load("configs/" . $resource . ".xml");

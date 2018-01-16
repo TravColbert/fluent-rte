@@ -4,7 +4,8 @@
 		<appname>Fluent RTE</appname>
 		<logger>logger</logger>
 		<db>db</db>
-		<dbsetting>host=127.0.0.1 dbname=provisioning user=provisioning</dbsetting>
+		<!-- host can be something like '127.0.0.1' too -->
+		<dbsetting>host='/var/run/postgresql/' dbname=provisioning user=provisioning password=''</dbsetting>
 		<modelpath>models/</modelpath>
 		<viewpath>views/</viewpath>
 		<xmldatapath>xmldata/</xmldatapath>

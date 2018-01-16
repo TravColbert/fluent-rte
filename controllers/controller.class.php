@@ -71,8 +71,9 @@ class controller {
 			$this->log($this->myname . ": No querystring found",LOG_ERR);
 			return false;
 		}
-
-		$viewinfo = $this->select_view("GET",$querystring["template"]);
+		$template = null;
+		if(array_key_exists("template",$querystring)) $template = $querystring["template"];
+		$viewinfo = $this->select_view("GET",$template);
 		return $this->start_chain($modelinfo,$viewinfo);
 	}
 
@@ -108,7 +109,11 @@ class controller {
 		$model = new $modelinfo["datasource"]($modelinfo["querystring"],$this);
 		$view = new $viewinfo["outputtype"]();
 		$this->log($this->myname . ": Starting model -> view chain",LOG_DEBUG);
-		return $view->get($model->$modelinfo["verb"](),$viewinfo["customtemplate"]);
+		$modelAction = $modelinfo["verb"];
+		$this->log("Model Action: " . $modelAction,LOG_DEBUG);
+		$this->log("Model: " . $model->$modelAction(),LOG_DEBUG);
+		$this->log("View: " . $viewinfo["customtemplate"],LOG_DEBUG);
+		return $view->get($model->$modelAction(),$viewinfo["customtemplate"]);
 	}
 
 	/* select_model is used to determine which model object will be
