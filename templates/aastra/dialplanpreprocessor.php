@@ -12,6 +12,7 @@ function to_minutes($xpath,$element) {
 
 // Convert from rfc3435 to Aastra digitmap format
 function to_rfc3435($xpath,$element) {
+	$returnstring = "";
 	/* Aastras:
 	 * replace "." (0 or more of the previous construct) with "+"
 	 * don't use the 'T'

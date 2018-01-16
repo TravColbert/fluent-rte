@@ -19,6 +19,7 @@
 # string as Aastra wants it.
 
 function to_customcodec($element) {
+	$returnstring = "";
 	/* $element is the XML-thing we got from the model.  We called this
 	 * template in the "codecgroup" context so the $element is a chunk of
 	 * XML type codecgroup

@@ -64,6 +64,7 @@ class controller {
 				$this->log($this->myname . ": No applicable query found",LOG_ERR);
 				return false;
 			};
+			// Let's get the actual data that feeds the template:
 			$modelinfo = $this->select_model($resource[1],"GET");
 			// be sure to include the query in the model's data
 			$modelinfo["querystring"] = $querystring["q"];
@@ -71,9 +72,20 @@ class controller {
 			$this->log($this->myname . ": No querystring found",LOG_ERR);
 			return false;
 		}
+		$modelinfo = $this->readmodel($modelinfo);
 		$template = null;
+		// Some queries (like 'devicesetting') have a template value embedded in it
+		// let's ask for that template if no specific template is asked for in the
+		// query...
+		//if(array_key_exists("template",$modelinfo)) $template = $modelinfo["template"];
 		if(array_key_exists("template",$querystring)) $template = $querystring["template"];
-		$viewinfo = $this->select_view("GET",$template);
+		if($template=="auto") {
+			$this->log($this->myname . "get(): model-specified auto-template: " + $modelinfo["template"], LOG_DEBUG);
+			//$viewinfo["customtemplate"] = $modelinfo["template"];
+			$viewinfo = $this->select_view("GET",$modelinfo["template"]);
+		} else {
+			$viewinfo = $this->select_view("GET",$template);
+		}
 		return $this->start_chain($modelinfo,$viewinfo);
 	}
 
@@ -82,11 +94,37 @@ class controller {
 			$this->log($this->myname . ": No datasource specified",LOG_ERR);
 			return false;
 		}
+		$this->log("post(): " . $request["resource"], LOG_DEBUG);
 		$modelinfo = $this->select_model($request["resource"],"POST");
 		// be sure to include the query in the model's data
 		$modelinfo["querystring"] = $request;
+		$modelinfo = $this->readmodel($modelinfo);
+
 		$viewinfo = $this->select_view("GET",$request["template"]);
 		return $this->start_chain($modelinfo,$viewinfo);
+	}
+
+	protected function readmodel($modelinfo) {
+		if(file_exists($modelinfo["url"])) {
+			require_once $modelinfo["url"];
+		} else {
+			$this->log($this->myname . ": Can't find specified model class",LOG_ERR);
+			return false;
+		}
+		$model = new $modelinfo["datasource"]($modelinfo["querystring"],$this);
+		$modelAction = $modelinfo["verb"];
+		$modelinfo["data"] = $model->$modelAction();
+		$this->log("start_chain(): Model Action: " . $modelAction,LOG_DEBUG);
+		$this->log("start_chain(): Model: " . $modelinfo["data"],LOG_DEBUG);
+		$modelinfo["XML"] = new SimpleXMLElement($modelinfo["data"]);
+		$templates = $modelinfo["XML"]->xpath('devicesetting/template');
+		if($templates) {
+			if(count($templates)>0) {
+				$this->log("start_chain(): >>>>" . $templates[0], LOG_DEBUG);
+				$modelinfo["template"] = $templates[0];
+			}
+		}
+		return $modelinfo;
 	}
 
 	public function getregistryentry($searchstring,$resource=null) {
@@ -98,22 +136,19 @@ class controller {
 	}
 
 	protected function start_chain($modelinfo,$viewinfo) {
-		if(file_exists($modelinfo["url"]) && file_exists($viewinfo["outputsource"])) {
-			require_once $modelinfo["url"];
+		if(file_exists($viewinfo["outputsource"])) {
 			require_once $viewinfo["outputsource"];
 		} else {
-			$this->log($this->myname . ": Can't find specified model class",LOG_ERR);
+			$this->log($this->myname . ": Can't find specified template",LOG_ERR);
 			return false;
 		}
-		// Create a new model-view chain
-		$model = new $modelinfo["datasource"]($modelinfo["querystring"],$this);
+		$this->log("start_chain(): View outputtype(): " . $viewinfo["outputtype"]);
 		$view = new $viewinfo["outputtype"]();
 		$this->log($this->myname . ": Starting model -> view chain",LOG_DEBUG);
+		$this->log("start_chain(): View: " . $viewinfo["customtemplate"],LOG_DEBUG);
 		$modelAction = $modelinfo["verb"];
-		$this->log("Model Action: " . $modelAction,LOG_DEBUG);
-		$this->log("Model: " . $model->$modelAction(),LOG_DEBUG);
-		$this->log("View: " . $viewinfo["customtemplate"],LOG_DEBUG);
-		return $view->get($model->$modelAction(),$viewinfo["customtemplate"]);
+		return $view->get($modelinfo["data"],$viewinfo["customtemplate"]);
+		//return $view->get($modelData,$viewinfo["customtemplate"]);
 	}
 
 	/* select_model is used to determine which model object will be
@@ -128,7 +163,9 @@ class controller {
 		$model["datasource"] = $this->getregistryentry($resource . "/datasource[@verb='" . $verb . "']/object",$resource);
 		$model["url"] = $this->modelpath . $this->getregistryentry($resource . "/datasource[@verb='" . $verb . "']/url",$resource);
 		$model["verb"] = strtolower($verb);
+		$arraystring = join(", ",array_keys($model));
 		$this->log($this->myname . ": Model class is: " . $model["url"],LOG_DEBUG);
+		$this->log($this->myname . ": Model: " . $arraystring, LOG_DEBUG);
 		return $model;
 	}
 
