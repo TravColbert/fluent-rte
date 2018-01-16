@@ -1,4 +1,4 @@
-/* preprocessor=devices/snom/preprocessor.php */
+/* preprocessor=templates/snom/preprocessor.php */
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
 <phone-settings>
@@ -21,7 +21,7 @@
 <codec6_name idx="1" perm="RW">18</codec6_name>
 <codec7_name idx="1" perm="RW">4</codec7_name>
 
-{%phoneline.xml::block:2%}
+{%snom/phoneline.xml::block:2%}
 
 <language perm="!">English</language>
 <web_language perm="RW">English</web_language>

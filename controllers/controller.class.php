@@ -116,6 +116,7 @@ class controller {
 		$modelinfo["data"] = $model->$modelAction();
 		$this->log("start_chain(): Model Action: " . $modelAction,LOG_DEBUG);
 		$this->log("start_chain(): Model: " . $modelinfo["data"],LOG_DEBUG);
+		$this->log("start_chain(): Model: " . $modelinfo["data"],LOG_ERR);
 		$modelinfo["XML"] = new SimpleXMLElement($modelinfo["data"]);
 		$templates = $modelinfo["XML"]->xpath('devicesetting/template');
 		if($templates) {

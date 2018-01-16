@@ -150,10 +150,13 @@ class template {
 				 * which means run blah.template in current resource
 				 * context and repeat the template as a config block
 				 */
+				/*
 				$subquery["template"] = $subtemplatefile[0];
 				$subquery["q"] = $subtemplatefile[1];
 				$subquery["repeat"] = $subtemplatefile[2];
 				$subquery["startloopat"] = $subtemplatefile[3];
+				*/
+				list($subquery["template"],$subquery["q"],$subquery["repeat"],$subquery["startloopat"]) = $subtemplatefile;
 				if(isset($subquery) && $subquery["q"]!="") {
 					$controller = new controller();
 					$string = $controller->get($subquery);

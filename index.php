@@ -1,5 +1,5 @@
 <?php
-/* vim: set expandtab tabstop=3 shiftwidth=3: */
+/* vim: set expandtab tabstop=2 shiftwidth=2 retab: */
 
 /*
 Fluent - a suite of tools for the management of VoIP networks
@@ -41,14 +41,12 @@ function handle_get($controller) {
 		echo "No query found";
 		return false;
 	}
-	$string = $controller->get($_REQUEST);
-	echo $string;
+	echo $controller->get($_REQUEST);
 	return true;
 }
 
 function handle_post($controller) {
 	// For object creation and updates(at the moment)
-	$string = $controller->post($_REQUEST);
-	echo $string;
+	echo $controller->post($_REQUEST);
 	return true;
 }
